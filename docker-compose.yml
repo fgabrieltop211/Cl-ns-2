@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  minecraft-server:
+    build: .
+    container_name: cl-ns-2-server
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./world:/minecraft-server/world
+      - ./logs:/minecraft-server/logs
+    environment:
+      - JAVA_OPTS=-Xmx1024M -Xms1024M
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
